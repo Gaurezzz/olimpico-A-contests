@@ -62,7 +62,7 @@ document.getElementById('btn').onclick = async function() {
         setTimeout(() => {
             mediaRecorder.stop();
             document.getElementById('btn').innerText = 'Start Recording';
-        }, 10800);
+        }, 10800000);
     } catch (err) {
         console.error('Error: ' + err);
     }
