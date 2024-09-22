@@ -20,6 +20,7 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 document.getElementById('btn').onclick = async function() {
+    
     try {
         // Solicitar acceso a la pantalla
         const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
@@ -27,6 +28,8 @@ document.getElementById('btn').onclick = async function() {
         // Crear un MediaRecorder para grabar el stream
         const mediaRecorder = new MediaRecorder(stream);
         const chunks = [];
+
+        newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
 
         // Almacenar los datos de video cuando estén disponibles
         mediaRecorder.ondataavailable = function(event) {
