@@ -1,3 +1,25 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import { getStorage, ref } from "firebase/storage";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+const contestNum = 1;
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyBqZuSpvM7PsNV-LbduBOFMMQg7rJl-Da0",
+    authDomain: "contests-olimpico-a.firebaseapp.com",
+    projectId: "contests-olimpico-a",
+    storageBucket: "contests-olimpico-a.appspot.com",
+    messagingSenderId: "260117359864",
+    appId: "1:260117359864:web:a067db3c7de36900d31f0d"
+    };
+        
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+
 document.getElementById('btn').onclick = async function() {
     try {
         // Solicitar acceso a la pantalla
@@ -20,6 +42,12 @@ document.getElementById('btn').onclick = async function() {
             const videoURL = URL.createObjectURL(blob);
             const video = document.getElementById('recordedVideo');
             video.src = videoURL;
+
+            // Subir el video a Firebase Storage
+            const storageRef = ref(storage, 'videos/' + contestNum + '.webm');
+            uploadBytes(storageRef, blob).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });
         };
 
         console.log(navigator.mediaDevices);
@@ -31,7 +59,6 @@ document.getElementById('btn').onclick = async function() {
         // Cambiar el texto del botón para indicar que está grabando
         document.getElementById('btn').innerText = 'Stop Recording';
         
-        // Detener la grabación después de 5 segundos (puedes ajustar este tiempo)
         setTimeout(() => {
             mediaRecorder.stop();
             document.getElementById('btn').innerText = 'Start Recording';
