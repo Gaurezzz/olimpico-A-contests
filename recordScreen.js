@@ -4,7 +4,6 @@ import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-const contestNum = 1;
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -43,8 +42,8 @@ document.getElementById('btn').onclick = async function() {
             const video = document.getElementById('recordedVideo');
             video.src = videoURL;
 
-            // Subir el video a Firebase Storage
-            const storageRef = ref(storage, 'videos/' + contestNum + '.webm');
+            // Subir el video a Firebase Storage utilizando fecha y hora
+            const storageRef = ref(storage, 'videos/' + new Date().toISOString() + '.webm');
             uploadBytes(storageRef, blob).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
