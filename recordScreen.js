@@ -59,6 +59,7 @@ document.getElementById('btn').onclick = async function() {
 
 
         // Comenzar la grabación
+        mediaRecorder.start();
         
         setTimeout(() => {
             mediaRecorder.stop();
