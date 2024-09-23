@@ -45,6 +45,8 @@ document.getElementById('btn').onclick = async function() {
             const video = document.getElementById('recordedVideo');
             video.src = videoURL;
 
+            console.log('parada');
+
             // Subir el video a Firebase Storage utilizando fecha y hora
             const storageRef = ref(storage, 'videos/' + new Date().toISOString() + '.webm');
             uploadBytes(storageRef, blob).then((snapshot) => {
