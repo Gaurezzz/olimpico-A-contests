@@ -4,7 +4,7 @@ import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-
+const mediaRecorder = null;
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBqZuSpvM7PsNV-LbduBOFMMQg7rJl-Da0",
@@ -31,7 +31,7 @@ document.getElementById('btn').onclick = async function() {
         const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
 
         // Crear un MediaRecorder para grabar el stream
-        const mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder = new MediaRecorder(stream);
         const chunks = [];
 
         // Almacenar los datos de video cuando estén disponibles
