@@ -30,7 +30,7 @@ document.getElementById('btn').onclick = async function() {
         const chunks = [];
 
         const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
-
+        document.getElementById('enlace').innerText = "contest";
         // Almacenar los datos de video cuando estén disponibles
         mediaRecorder.ondataavailable = function(event) {
             if (event.data.size > 0) {
