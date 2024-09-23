@@ -4,7 +4,7 @@ import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-const mediaRecorder = null;
+var mediaRecorder = null;
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBqZuSpvM7PsNV-LbduBOFMMQg7rJl-Da0",
