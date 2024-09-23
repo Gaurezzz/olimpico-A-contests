@@ -29,7 +29,7 @@ document.getElementById('btn').onclick = async function() {
         const mediaRecorder = new MediaRecorder(stream);
         const chunks = [];
 
-        newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
+        const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
 
         // Almacenar los datos de video cuando estén disponibles
         mediaRecorder.ondataavailable = function(event) {
