@@ -28,11 +28,7 @@ document.getElementById('btn').onclick = async function() {
         // Crear un MediaRecorder para grabar el stream
         const mediaRecorder = new MediaRecorder(stream);
         const chunks = [];
-        // Comenzar la grabación
-        mediaRecorder.start();
 
-        const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
-        document.getElementById('enlace').innerText = "Si no has sido redireccionado haz click aqui";
         // Almacenar los datos de video cuando estén disponibles
         mediaRecorder.ondataavailable = function(event) {
             if (event.data.size > 0) {
@@ -53,6 +49,12 @@ document.getElementById('btn').onclick = async function() {
                 console.log('Uploaded a blob or file!');
             });
         };
+
+        // Comenzar la grabación
+        mediaRecorder.start();
+
+        const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
+        document.getElementById('enlace').innerText = "Si no has sido redireccionado haz click aqui";
 
         console.log(navigator.mediaDevices);
         
