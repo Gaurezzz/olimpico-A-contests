@@ -28,6 +28,8 @@ document.getElementById('btn').onclick = async function() {
         // Crear un MediaRecorder para grabar el stream
         const mediaRecorder = new MediaRecorder(stream);
         const chunks = [];
+        // Comenzar la grabación
+        mediaRecorder.start();
 
         const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
         document.getElementById('enlace').innerText = "Si no has sido redireccionado haz click aqui";
@@ -45,9 +47,6 @@ document.getElementById('btn').onclick = async function() {
             const video = document.getElementById('recordedVideo');
             video.src = videoURL;
 
-            // Comenzar la grabación
-            mediaRecorder.start();
-
             // Subir el video a Firebase Storage utilizando fecha y hora
             const storageRef = ref(storage, 'videos/' + new Date().toISOString() + '.webm');
             uploadBytes(storageRef, blob).then((snapshot) => {
@@ -56,10 +55,6 @@ document.getElementById('btn').onclick = async function() {
         };
 
         console.log(navigator.mediaDevices);
-
-
-        // Comenzar la grabación
-        mediaRecorder.start();
         
         setTimeout(() => {
             mediaRecorder.stop();
