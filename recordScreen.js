@@ -48,10 +48,16 @@ document.getElementById('btn').onclick = async function() {
             uploadBytes(storageRef, blob).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
+
+            window.onbeforeunload = null;
         };
 
         // Comenzar la grabación
         mediaRecorder.start();
+
+        window.onbeforeunload = function() {
+            return "La grabación está en progreso. ¿Estás seguro de que quieres salir?";
+        };
 
         const newWindow = window.open("https://codeforces.com/contestRegistration/2006/virtual/true", "_blank");
         document.getElementById('enlace').innerText = "Si no has sido redireccionado haz click aqui";
