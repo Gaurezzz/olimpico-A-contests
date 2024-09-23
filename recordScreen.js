@@ -20,6 +20,11 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 document.getElementById('btn').onclick = async function() {
+
+    if (document.getElementById('btn').innerText === 'Stop Recording') {
+        mediaRecorder.stop();
+        return;
+    }
     
     try {
         // Solicitar acceso a la pantalla
@@ -42,6 +47,7 @@ document.getElementById('btn').onclick = async function() {
             const videoURL = URL.createObjectURL(blob);
             const video = document.getElementById('recordedVideo');
             video.src = videoURL;
+            document.getElementById('btn').innerText = 'Start Recording';
 
             // Subir el video a Firebase Storage utilizando fecha y hora
             const storageRef = ref(storage, 'videos/' + new Date().toISOString() + '.webm');
