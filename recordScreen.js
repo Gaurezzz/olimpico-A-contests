@@ -40,6 +40,7 @@ document.getElementById('btn').onclick = async function() {
 
         // Cuando la grabación se detenga, crear un blob y mostrar el video grabado
         mediaRecorder.onstop = function() {
+            console.log('parada');
             const blob = new Blob(chunks, { type: 'video/webm' });
             const videoURL = URL.createObjectURL(blob);
             const video = document.getElementById('recordedVideo');
