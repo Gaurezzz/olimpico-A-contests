@@ -58,6 +58,8 @@ document.getElementById('btn').onclick = async function() {
             window.onbeforeunload = null;
         };
 
+        document.getElementById('btn').innerText = 'Stop Recording';
+
         // Comenzar la grabación
         mediaRecorder.start();
 
