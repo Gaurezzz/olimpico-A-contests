@@ -56,10 +56,6 @@ document.getElementById('btn').onclick = async function() {
 
 
         // Comenzar la grabación
-        mediaRecorder.start();
-        
-        // Cambiar el texto del botón para indicar que está grabando
-        document.getElementById('btn').innerText = 'Stop Recording';
         
         setTimeout(() => {
             mediaRecorder.stop();
